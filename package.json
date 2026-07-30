@@ -4,7 +4,7 @@
   "description": "A full-stack testimonial collection and moderation platform. Businesses collect feedback from customers, moderate submissions, and showcase approved testimonials on their website through an embeddable widget.",
   "main": "index.js",
   "scripts": {
-    "build": "npm install --prefix Backend && npm install --prefix Frontend && npm run build --prefix Frontend",
+    "build": "npm install --prefix Backend && npm install --include=dev --prefix Frontend && npm run build --prefix Frontend",
     "start": "npm run start --prefix Backend"
   },
   "keywords": [],
