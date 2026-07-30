@@ -1,0 +1,22 @@
+/* The embed lives inside an iframe on someone else's site: no app
+   background color (so it blends with the host page), tighter padding
+   than the full wall page, and a narrower default column width since
+   embeds are usually placed in a content column, not a full viewport. */
+body {
+    background: transparent;
+}
+
+.embed {
+    background: transparent;
+    padding: var(--space-3);
+}
+
+.embed__grid {
+    columns: 2 240px;
+}
+
+@media (max-width: 480px) {
+    .embed__grid {
+        columns: 1;
+    }
+}

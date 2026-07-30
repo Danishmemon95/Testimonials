@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Acme Corp — Customer Reviews (Embed Demo)</title>
+    <style>
+        /*
+         * This page intentionally looks NOTHING like the testimonial platform.
+         * It simulates a real third-party business site embedding the widget,
+         * proving the iframe renders correctly outside the host application.
+         */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f1f5f9;
+            min-height: 100vh;
+        }
+
+        .site-header {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 16px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .site-logo {
+            font-weight: 700;
+            font-size: 20px;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .site-logo span {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .site-nav a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            margin-left: 24px;
+            transition: color 0.2s;
+        }
+        .site-nav a:hover { color: #f1f5f9; }
+
+        .hero {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 56px 24px 24px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #f1f5f9, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            color: #94a3b8;
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 520px;
+            margin: 0 auto 32px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 999px;
+            margin-bottom: 16px;
+        }
+
+        .widget-container {
+            max-width: 960px;
+            margin: 0 auto 64px;
+            padding: 0 24px;
+        }
+
+        .widget-container iframe {
+            width: 100%;
+            border: none;
+            border-radius: 16px;
+            background: transparent;
+            min-height: 200px;
+            transition: height 0.3s ease;
+        }
+
+        /* Customization Controls */
+        .controls {
+            max-width: 960px;
+            margin: 0 auto 32px;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .controls label {
+            font-size: 13px;
+            font-weight: 500;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .controls input[type="color"] {
+            width: 32px;
+            height: 32px;
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            background: transparent;
+            padding: 0;
+        }
+
+        .controls select {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: #f1f5f9;
+            font-size: 13px;
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .embed-code {
+            max-width: 960px;
+            margin: 0 auto 64px;
+            padding: 0 24px;
+        }
+
+        .embed-code h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #94a3b8;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .embed-code pre {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 16px 20px;
+            overflow-x: auto;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #60a5fa;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .site-footer {
+            text-align: center;
+            padding: 24px;
+            color: #475569;
+            font-size: 12px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Simulated third-party business site header -->
+    <header class="site-header">
+        <div class="site-logo">
+            🚀 <span>Acme Corp</span>
+        </div>
+        <nav class="site-nav">
+            <a href="#">Products</a>
+            <a href="#">Pricing</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Hero section -->
+    <section class="hero">
+        <div class="badge">💬 Live Reviews</div>
+        <h1>What Our Customers Say</h1>
+        <p>
+            Don't just take our word for it. Here's what real people are saying
+            about Acme Corp — powered by our embedded testimonial widget.
+        </p>
+    </section>
+
+    <!-- Widget Customization Controls -->
+    <div class="controls">
+        <label>
+            Accent Color:
+            <input type="color" id="accentColor" value="#f59e0b" />
+        </label>
+        <label>
+            Max Cards:
+            <select id="cardLimit">
+                <option value="3">3</option>
+                <option value="6" selected>6</option>
+                <option value="9">9</option>
+                <option value="12">12</option>
+            </select>
+        </label>
+    </div>
+
+    <!-- Embedded Testimonial Widget (iframe) -->
+    <div class="widget-container">
+        <iframe
+            id="testimonial-widget"
+            src="http://localhost:5173/embed?color=%23f59e0b&limit=6"
+            title="Customer Testimonials"
+            loading="lazy"
+        ></iframe>
+    </div>
+
+    <!-- Embed Code Snippet -->
+    <div class="embed-code">
+        <h3>Embed Code</h3>
+        <pre id="codeSnippet">&lt;iframe
+  src="http://localhost:5173/embed?color=%23f59e0b&amp;limit=6"
+  style="width:100%;border:none;min-height:200px"
+  title="Customer Testimonials"
+  loading="lazy"
+&gt;&lt;/iframe&gt;
+
+&lt;script&gt;
+  window.addEventListener("message", (e) =&gt; {
+    if (e.data?.type === "testimonial-widget:resize") {
+      document.querySelector("iframe").style.height = e.data.height + "px";
+    }
+  });
+&lt;/script&gt;</pre>
+    </div>
+
+    <footer class="site-footer">
+        This is a demo page simulating a third-party website. It proves the
+        testimonial widget renders correctly outside the main application.
+    </footer>
+
+    <script>
+        const iframe = document.getElementById("testimonial-widget");
+        const colorPicker = document.getElementById("accentColor");
+        const limitSelect = document.getElementById("cardLimit");
+        const codeSnippet = document.getElementById("codeSnippet");
+
+        // Auto-resize iframe based on postMessage from the widget
+        window.addEventListener("message", (e) => {
+            if (e.data && e.data.type === "testimonial-widget:resize") {
+                iframe.style.height = e.data.height + "px";
+            }
+        });
+
+        function updateWidget() {
+            const color = encodeURIComponent(colorPicker.value);
+            const limit = limitSelect.value;
+            const src = `http://localhost:5173/embed?color=${color}&limit=${limit}`;
+            iframe.src = src;
+
+            // Update the code snippet display
+            codeSnippet.textContent =
+`<iframe
+  src="${src}"
+  style="width:100%;border:none;min-height:200px"
+  title="Customer Testimonials"
+  loading="lazy"
+></iframe>
+
+<script>
+  window.addEventListener("message", (e) => {
+    if (e.data?.type === "testimonial-widget:resize") {
+      document.querySelector("iframe").style.height = e.data.height + "px";
+    }
+  });
+<\/script>`;
+        }
+
+        colorPicker.addEventListener("input", updateWidget);
+        limitSelect.addEventListener("change", updateWidget);
+    </script>
+</body>
+</html>
