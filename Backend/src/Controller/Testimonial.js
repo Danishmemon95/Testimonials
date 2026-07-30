@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { Testimonial } from "../models/Testimonial.js";
+import { Testimonial } from "../Models/Testimonial.js";
 
 const VALID_STATUSES = ["pending", "approved", "rejected"];
 
