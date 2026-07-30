@@ -31,8 +31,8 @@ app.get("/health", (req, res) => {
 app.use("/api/testimonials", testimonialRoutes);
 
 // In production, serve the built React frontend. The catch-all sends
-// every non-API path to index.html so client-side routing works
-// (e.g. /wall, /dashboard, /embed all resolve to the React app).
+// every non-API path to index.html so React Router handles client-side
+// routing (e.g. /wall, /dashboard, /embed).
 if (process.env.NODE_ENV === "production") {
     const frontendDist = path.join(__dirname, "../Frontend/dist");
     app.use(express.static(frontendDist));
