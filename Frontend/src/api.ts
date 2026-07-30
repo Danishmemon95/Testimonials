@@ -1,8 +1,9 @@
 import axios from "axios";
 import type { Testimonial, TestimonialStatus, TestimonialSubmission, PaginatedTestimonials } from "./types";
 
-// Set VITE_API_URL once deployed, e.g. VITE_API_URL=https://your-api.onrender.com
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+// In production (single-service deploy), API is on the same origin → use "".
+// For local dev, create Frontend/.env with VITE_API_URL=http://localhost:5000
+const API_URL = import.meta.env.VITE_API_URL ?? "";
 
 const client = axios.create({
     baseURL: `${API_URL}/api`,
